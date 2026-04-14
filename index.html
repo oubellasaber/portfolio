@@ -1,185 +1,370 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Saber</title>
-    </head>
-    <body>
-        <header>
-            <nav>
-                <a href="#hero" class="logo">Saber</a>
-                <ul>
-                    <li><a href="#about">about</a></li>
-                    <li><a href="#projects">projects</a></li>
-                    <li><a href="#contact">contact</a></li>
-                </ul>
-            </nav>
-        </header>
 
-        <main>
-            <section id="hero" aria-labelledby="hero-heading">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saber</title>
+</head>
+<style>
+    :root {
+        --bg: #0e0e0e;
+        --surface: #1a1a1a;
+        --border: rgba(255, 255, 255, 0, 0.08);
+        --text: #f0ede8;
+        --muted: rgba(240, 237, 232, 0.45);
+    }
+
+    body {
+        background-color: var(--bg);
+        color: var(--text);
+        /* font-family: ; */
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    body>header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 48px;
+        background-color: rgba(14, 14, 14, 0.85);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+    }
+
+    body>header .logo {
+        /* font-family: ; */
+        font-weight: 700;
+        font-size: 15px;
+        letter-spacing: 0.02rem;
+        color: var(--text);
+        text-decoration: none;
+    }
+
+    nav ul {
+        display: flex;
+        gap: 36px;
+        list-style: none;
+    }
+
+    nav a {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 12px;
+        letter-spacing: 0.06rem;
+        transition: color 0.2s;
+    }
+
+    nav a:hover {
+        color: var(--text);
+    }
+
+    #hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 140px 48px 80px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    #hero::before,
+    #hero::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background: var(--border);
+        pointer-events: none;
+    }
+
+    #hero::before {
+        left: 33.33%;
+    }
+
+    #hero::after {
+        left: 66.66%;
+    }
+
+    .hero-inner {
+        max-width: 780px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .hero-badge {
+        display: inline-block;
+        font-size: 10px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 28px;
+        border: 1px solid var(--border);
+        padding: 5px 12px;
+        border-radius: 2px;
+    }
+
+    h1 {
+        font-family: 'Syne', sans-serif;
+        font-size: clamp(48px, 7vw, 96px);
+        font-weight: 800;
+        line-height: 1.0;
+        letter-spacing: -0.02em;
+        margin-bottom: 28px;
+    }
+
+    .hero-tagline {
+        color: var(--muted);
+        max-width: 440px;
+        font-size: 13px;
+        line-height: 1.75;
+        margin-bottom: 48px;
+    }
+
+    .hero-actions {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        /* font-family: ; */
+        font-size: 11px;
+        letter-spacing: 0.06em;
+        padding: 12px 24px;
+        border-radius: 3px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.2s;
+    }
+
+    .btn-ghost {
+        background: transparent;
+        border: 1px solid var(--border);
+        color: var(--muted);
+    }
+
+    .btn-ghost:hover {
+        border-color: rgba(255, 255, 255, 0.3);
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.04);
+    }
+
+    .btn-solid {
+        background: var(--text);
+        border: 1px solid var(--text);
+        color: var(--bg);
+        font-weight: 500;
+    }
+
+    .btn-solid:hover {
+        background: rgba(240, 237, 232, 0.88);
+    }
+</style>
+
+<body>
+    <header>
+        <a href="#hero" class="logo">Saber</a>
+        <nav>
+            <ul>
+                <li><a href="#about">about</a></li>
+                <li><a href="#projects">projects</a></li>
+                <li><a href="#contact">contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" aria-labelledby="hero-heading">
+            <div class="hero-inner">
                 <p class="hero-badge">Available for opportunities</p>
                 <h1 id="hero-heading">Aspiring C#<br>Backend Developer</h1>
-                <p>Learning and building with .NET technologies. Passionate about creating scalable backend systems and solving complex problems through code.</p>
+                <p class="hero-tagline">Learning and building with .NET technologies. Passionate about creating scalable
+                    backend systems and solving complex problems through code.</p>
                 <div class="hero-actions">
                     <a href="#contact" class="btn btn-solid">
                         Get in touch
                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                            <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.2"
+                                stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </a>
                     <a href="#projects" class="btn btn-ghost">View Projects</a>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section id="about" aria-labelledby="about-heading">
-                <span>About me</span>
-                <div class="about-grid">
-                    <p id="about-heading">Learning journey</p>
-                    <p>I'm a self-taught developer with a strong interest in backend development using C#. I enjoy working on projects that challenge me to learn new technologies and improve my coding skills. My goal is to build efficient and maintainable backend systems that can handle high traffic and complex business logic.</p>
-                </div>
-            </section>
+        <section id="about" aria-labelledby="about-heading">
+            <span>About me</span>
+            <div class="about-grid">
+                <p id="about-heading">Learning journey</p>
+                <p>I'm a self-taught developer with a strong interest in backend development using C#. I enjoy working
+                    on projects that challenge me to learn new technologies and improve my coding skills. My goal is to
+                    build efficient and maintainable backend systems that can handle high traffic and complex business
+                    logic.</p>
+            </div>
+        </section>
 
-            <section id="skills" aria-labelledby="skills-heading">
-                <span>Skills</span>
-                <p id="skills-heading">Technologies & concepts</p>
+        <section id="skills" aria-labelledby="skills-heading">
+            <span>Skills</span>
+            <p id="skills-heading">Technologies & concepts</p>
 
-                <div class="skills-grid">
-                    <section id="skills" aria-labelledby="skill-csharp-net">
-                        <h3 id="skill-csharp-net">C# &amp; .NET</h3>
-                        <ul>
-                            <li>C# language</li>
-                            <li>.NET Core Basics</li>
+            <div class="skills-grid">
+                <section id="skills" aria-labelledby="skill-csharp-net">
+                    <h3 id="skill-csharp-net">C# &amp; .NET</h3>
+                    <ul>
+                        <li>C# language</li>
+                        <li>.NET Core Basics</li>
+                        <li>ASP.NET Core</li>
+                        <li>Entity Framework Core</li>
+                        <li>LINQ & Collections</li>
+                        <li>REST API Development</li>
+                    </ul>
+                </section>
+
+                <section id="skills" aria-labelledby="skill-databases">
+                    <h3 id="skill-databases">Databases</h3>
+                    <ul>
+                        <li>SQL Fundamentals</li>
+                        <li>SQL Server</li>
+                        <li>Database Design</li>
+                        <li>EF Core Migrations</li>
+                        <li>Data Relationships</li>
+                        <li>CRUD Operations</li>
+                    </ul>
+                </section>
+
+                <section id="skills" aria-labelledby="skill-tools-concepts">
+                    <h3 id="skill-tools-concepts">Tools & Concepts</h3>
+                    <ul>
+                        <li>Visual Studio</li>
+                        <li>Git & GitHub</li>
+                        <li>OOP Principles</li>
+                        <li>Dependency Injection</li>
+                        <li>MVC Pattern</li>
+                        <li>Clean Code Practices</li>
+                    </ul>
+                </section>
+            </div>
+        </section>
+
+        <section id="portfolio" aria-labelledby="portfolio-heading">
+            <span>Portfolio</span>
+            <h2 id="portfolio-heading">Featured projects</h2>
+
+            <ol>
+                <li>
+                    <article>
+                        <header>
+                            <h3>Project 1</h3>
+                            <a href="#" class="external-link" aria-label="View Task Management API on GitHub">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                    <path d="M3 13L13 3M13 3H7M13 3V9" stroke="currentColor" stroke-width="1.2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </a>
+                        </header>
+                        <ul class="project-stack">
                             <li>ASP.NET Core</li>
-                            <li>Entity Framework Core</li>
-                            <li>LINQ & Collections</li>
-                            <li>REST API Development</li>
-                        </ul>
-                    </section>
-
-                    <section id="skills" aria-labelledby="skill-databases">
-                        <h3 id="skill-databases">Databases</h3>
-                        <ul>
-                            <li>SQL Fundamentals</li>
+                            <li>Entity Framework</li>
                             <li>SQL Server</li>
-                            <li>Database Design</li>
-                            <li>EF Core Migrations</li>
-                            <li>Data Relationships</li>
-                            <li>CRUD Operations</li>
                         </ul>
-                    </section>
-
-                    <section id="skills" aria-labelledby="skill-tools-concepts">
-                        <h3 id="skill-tools-concepts">Tools & Concepts</h3>
-                        <ul>
-                            <li>Visual Studio</li>
-                            <li>Git & GitHub</li>
-                            <li>OOP Principles</li>
-                            <li>Dependency Injection</li>
-                            <li>MVC Pattern</li>
-                            <li>Clean Code Practices</li>
+                        <p class="project-desc">A RESTful API for managing tasks, allowing users to create, read,
+                            update, and delete tasks. Built with ASP.NET Core and Entity Framework Core, it features JWT
+                            authentication and follows clean code principles.</p>
+                        <ul class="project-tags" aria-label="Technologies used">
+                            <li>API Design</li>
+                            <li>Database Integration</li>
+                            <li>Authentication & Authorization</li>
                         </ul>
-                    </section>
-                </div>
-            </section>
+                    </article>
+                </li>
+                <li>
+                    <article>
+                        <header>
+                            <h3>Project 2</h3>
+                            <a href="#" class="external-link" aria-label="View Blog Platform on GitHub">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                    <path d="M3 13L13 3M13 3H7M13 3V9" stroke="currentColor" stroke-width="1.2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </a>
+                        </header>
+                        <ul class="project-stack">
+                            <li>ASP.NET Core MVC</li>
+                            <li>Entity Framework</li>
+                            <li>SQL Server</li>
+                        </ul>
+                        <p class="project-desc">A simple blogging platform that allows users to create and manage blog
+                            posts. It includes features like user registration, authentication, and CRUD operations for
+                            posts, built using ASP.NET Core MVC.</p>
+                        <ul class="project-tags" aria-label="Technologies used">
+                            <li>Web Application Development</li>
+                            <li>User Authentication</li>
+                            <li>Database Management</li>
+                        </ul>
+                    </article>
+                </li>
+                <li>
+                    <article>
+                        <header>
+                            <h3>Project 3</h3>
+                            <a href="#" class="external-link" aria-label="View Weather Forecast API on GitHub">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                    <path d="M3 13L13 3M13 3H7M13 3V9" stroke="currentColor" stroke-width="1.2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </a>
+                        </header>
+                        <ul class="project-stack">
+                            <li>ASP.NET Core</li>
+                            <li>External API Integration</li>
+                        </ul>
+                        <p class="project-desc">A simple API that provides weather forecasts by integrating with an
+                            external weather service. Built with ASP.NET Core, it demonstrates how to consume
+                            third-party APIs and return structured data.</p>
+                        <ul class="project-tags" aria-label="Technologies used">
+                            <li>API Development</li>
+                            <li>External API Integration</li>
+                            <li>Data Handling</li>
+                        </ul>
+                    </article>
+                </li>
+            </ol>
+        </section>
 
-            <section id="portfolio" aria-labelledby="portfolio-heading">
-                <span>Portfolio</span>
-                <h2 id="portfolio-heading">Featured projects</h2>
+        <section id="contact" aria-labelledby="contact-heading">
+            <span>Get in Touch</span>
+            <h2 id="contact-heading">Let's talk</h2>
+            <p>I'm always interested in connecting with other developers and discussing backend development, .NET
+                technologies, or potential opportunities. Feel free to reach out.</p>
+            <address>
+                <nav class="contact-links" aria-label="Contact links">
+                    <a href="mailto:oubellasaber@gmail.com">Email</a>
+                    <a href="https://github.com/oubellasaber" target="_blank">GitHub</a>
+                    <a href="https://linkedin.com/in/oubellasaber" target="_blank">LinkedIn</a>
+                </nav>
+            </address>
+            <ul>
+                <li><button><a href="mailto:example@email.com">Email</a></button></li>
+                <li><button><a href="https://github.com/example" target="_blank">GitHub</a></button></li>
+                <li><button><a href="https://linkedin.com/in/example" target="_blank">LinkedIn</a></button></li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; Built with love (by hands) by Saber • 2026</p>
+    </footer>
+</body>
 
-                <ol>
-                    <li>
-                        <article>
-                            <header>
-                                <h3>Project 1</h3>
-                                 <a href="#" class="external-link" aria-label="View Task Management API on GitHub">
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                                      <path d="M3 13L13 3M13 3H7M13 3V9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </a>
-                            </header>
-                            <ul class="project-stack">
-                                    <li>ASP.NET Core</li>
-                                    <li>Entity Framework</li>
-                                    <li>SQL Server</li>
-                            </ul>
-                            <p class="project-desc">A RESTful API for managing tasks, allowing users to create, read, update, and delete tasks. Built with ASP.NET Core and Entity Framework Core, it features JWT authentication and follows clean code principles.</p>
-                            <ul class="project-tags" aria-label="Technologies used">
-                                <li>API Design</li>
-                                <li>Database Integration</li>
-                                <li>Authentication & Authorization</li>
-                            </ul>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h3>Project 2</h3>
-                                <a href="#" class="external-link" aria-label="View Blog Platform on GitHub">
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                                        <path d="M3 13L13 3M13 3H7M13 3V9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </a>
-                            </header>
-                            <ul class="project-stack">
-                                    <li>ASP.NET Core MVC</li>
-                                    <li>Entity Framework</li>
-                                    <li>SQL Server</li>
-                            </ul>
-                            <p class="project-desc">A simple blogging platform that allows users to create and manage blog posts. It includes features like user registration, authentication, and CRUD operations for posts, built using ASP.NET Core MVC.</p>
-                            <ul class="project-tags" aria-label="Technologies used">
-                                <li>Web Application Development</li>
-                                <li>User Authentication</li>
-                                <li>Database Management</li>
-                            </ul>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h3>Project 3</h3>
-                                <a href="#" class="external-link" aria-label="View Weather Forecast API on GitHub">
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                                        <path d="M3 13L13 3M13 3H7M13 3V9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </a>
-                            </header>
-                            <ul class="project-stack">
-                                    <li>ASP.NET Core</li>
-                                    <li>External API Integration</li>
-                            </ul>
-                            <p class="project-desc">A simple API that provides weather forecasts by integrating with an external weather service. Built with ASP.NET Core, it demonstrates how to consume third-party APIs and return structured data.</p>
-                            <ul class="project-tags" aria-label="Technologies used">
-                                <li>API Development</li>
-                                <li>External API Integration</li>
-                                <li>Data Handling</li>
-                            </ul>
-                        </article>
-                    </li>
-                </ol>
-            </section>
-
-            <section id="contact" aria-labelledby="contact-heading">
-                <span>Get in Touch</span>
-                <h2 id="contact-heading">Let's talk</h2>
-                <p>I'm always interested in connecting with other developers and discussing backend development, .NET technologies, or potential opportunities. Feel free to reach out.</p>
-                <address>
-                    <nav class="contact-links" aria-label="Contact links">
-                        <a href="mailto:oubellasaber@gmail.com">Email</a>
-                        <a href="https://github.com/oubellasaber" target="_blank">GitHub</a>
-                        <a href="https://linkedin.com/in/oubellasaber" target="_blank">LinkedIn</a>
-                    </nav>
-                </address>
-                <ul>
-                    <li><button><a href="mailto:example@email.com">Email</a></button></li>
-                    <li><button><a href="https://github.com/example" target="_blank">GitHub</a></button></li>
-                    <li><button><a href="https://linkedin.com/in/example" target="_blank">LinkedIn</a></button></li>
-                </ul>
-            </section>
-        </main>
-        <footer>
-            <p>&copy;  Built with love (by hands) by Saber • 2026</p>
-        </footer>
-    </body>
 </html>

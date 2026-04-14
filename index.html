@@ -7,10 +7,12 @@
     <title>Saber</title>
 </head>
 <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
         --bg: #0e0e0e;
         --surface: #1a1a1a;
-        --border: rgba(255, 255, 255, 0, 0.08);
+        --border: rgba(255, 255, 255, 0.08);
         --text: #f0ede8;
         --muted: rgba(240, 237, 232, 0.45);
     }
@@ -170,6 +172,73 @@
     .btn-solid:hover {
         background: rgba(240, 237, 232, 0.88);
     }
+
+    main > section {
+      border-top: 1px solid var(--border);
+      padding: 100px 48px;
+    }
+
+    .eyebrow {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 56px;
+    }
+
+    h2 {
+      /* font-family: ; */
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+
+
+    #about .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .about-body {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 18px;
+      margin-bottom: 0;
+    }
+
+    #skills h2 { margin-bottom: 56px; }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+
+    .skill-category h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      margin-bottom: 20px;
+    }
+
+    .skill-category ul { list-style: none; }
+
+    .skill-category li {
+      color: var(--muted);
+      font-size: 12px;
+      padding: 5px 0;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.2s;
+    }
+
+    .skill-category li:hover { color: var(--text); }
+    
+    #projects h2 { margin-bottom: 56px; }
 </style>
 
 <body>
@@ -205,10 +274,10 @@
         </section>
 
         <section id="about" aria-labelledby="about-heading">
-            <span>About me</span>
+            <span class="eyebrow">About me</span>
             <div class="about-grid">
-                <p id="about-heading">Learning journey</p>
-                <p>I'm a self-taught developer with a strong interest in backend development using C#. I enjoy working
+                <h2 id="about-heading">Learning<br>Journey</h2>
+                <p class="about-body">I'm a self-taught developer with a strong interest in backend development using C#. I enjoy working
                     on projects that challenge me to learn new technologies and improve my coding skills. My goal is to
                     build efficient and maintainable backend systems that can handle high traffic and complex business
                     logic.</p>
@@ -216,11 +285,11 @@
         </section>
 
         <section id="skills" aria-labelledby="skills-heading">
-            <span>Skills</span>
-            <p id="skills-heading">Technologies & concepts</p>
+            <span class="eyebrow">Skills</span>
+            <h2 id="skills-heading">Technologies & concepts</h2>
 
             <div class="skills-grid">
-                <section id="skills" aria-labelledby="skill-csharp-net">
+                <section class="skill-category" id="skills" aria-labelledby="skill-csharp-net">
                     <h3 id="skill-csharp-net">C# &amp; .NET</h3>
                     <ul>
                         <li>C# language</li>
@@ -232,7 +301,7 @@
                     </ul>
                 </section>
 
-                <section id="skills" aria-labelledby="skill-databases">
+                <section class="skill-category" id="skills" aria-labelledby="skill-databases">
                     <h3 id="skill-databases">Databases</h3>
                     <ul>
                         <li>SQL Fundamentals</li>
@@ -244,7 +313,7 @@
                     </ul>
                 </section>
 
-                <section id="skills" aria-labelledby="skill-tools-concepts">
+                <section class="skill-category" id="skills" aria-labelledby="skill-tools-concepts">
                     <h3 id="skill-tools-concepts">Tools & Concepts</h3>
                     <ul>
                         <li>Visual Studio</li>
@@ -258,9 +327,9 @@
             </div>
         </section>
 
-        <section id="portfolio" aria-labelledby="portfolio-heading">
-            <span>Portfolio</span>
-            <h2 id="portfolio-heading">Featured projects</h2>
+        <section id="projects" aria-labelledby="projects-heading">
+            <span class="eyebrow">Portfolio</span>
+            <h2 id="projects-heading">Featured projects</h2>
 
             <ol>
                 <li>

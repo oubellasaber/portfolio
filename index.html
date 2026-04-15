@@ -239,6 +239,146 @@
     .skill-category li:hover { color: var(--text); }
     
     #projects h2 { margin-bottom: 56px; }
+
+    .projects-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    article.project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 32px 36px;
+      transition: border-color 0.25s, background 0.25s;
+    }
+    article.project-card:hover {
+      border-color: rgba(255,255,255,0.2);
+      background: #1e1e1e;
+    }
+
+    .project-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .project-card h3 {
+      /* font-family: ; */
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .project-card a.external-link {
+      color: var(--muted);
+      flex-shrink: 0;
+      margin-top: 2px;
+      text-decoration: none;
+    }
+
+    .project-card a.external-link:hover { color: var(--text); }
+
+    .project-stack {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 16px;
+      letter-spacing: 0.04em;
+    }
+
+    .project-stack  {
+        display: flex;
+        list-style: none;
+    }
+
+    .project-stack li::after {
+        content: '•';
+        font-size: 8px;
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+
+    .project-stack li:last-child::after { content: none; }
+
+    .project-desc {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .project-tags li {
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      padding: 4px 10px;
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      color: var(--muted);
+    }
+
+    #contact h2 {
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+
+    #contact > p {
+      color: var(--muted);
+      font-size: 13px;
+      max-width: 420px;
+      margin-bottom: 48px;
+    }
+
+    address { font-style: normal; }
+
+    .contact-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .contact-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      padding: 11px 20px;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    
+    .contact-links a:hover {
+      border-color: rgba(255,255,255,0.3);
+      color: var(--text);
+      background: rgba(255,255,255,0.04);
+    }
+
+    body > footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 48px;
+      display: flex;
+      justify-content: center;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: capitalize;
+    }
 </style>
 
 <body>
@@ -331,10 +471,10 @@
             <span class="eyebrow">Portfolio</span>
             <h2 id="projects-heading">Featured projects</h2>
 
-            <ol>
+            <ol class="projects-list">
                 <li>
-                    <article>
-                        <header>
+                    <article class="project-card">
+                        <header class="project-card-header">
                             <h3>Project 1</h3>
                             <a href="#" class="external-link" aria-label="View Task Management API on GitHub">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -359,8 +499,8 @@
                     </article>
                 </li>
                 <li>
-                    <article>
-                        <header>
+                    <article class="project-card">
+                        <header class="project-card-header">
                             <h3>Project 2</h3>
                             <a href="#" class="external-link" aria-label="View Blog Platform on GitHub">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -385,8 +525,8 @@
                     </article>
                 </li>
                 <li>
-                    <article>
-                        <header>
+                    <article class="project-card">
+                        <header class="project-card-header">
                             <h3>Project 3</h3>
                             <a href="#" class="external-link" aria-label="View Weather Forecast API on GitHub">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -413,7 +553,7 @@
         </section>
 
         <section id="contact" aria-labelledby="contact-heading">
-            <span>Get in Touch</span>
+            <span class="eyebrow">Get in Touch</span>
             <h2 id="contact-heading">Let's talk</h2>
             <p>I'm always interested in connecting with other developers and discussing backend development, .NET
                 technologies, or potential opportunities. Feel free to reach out.</p>
@@ -424,11 +564,6 @@
                     <a href="https://linkedin.com/in/oubellasaber" target="_blank">LinkedIn</a>
                 </nav>
             </address>
-            <ul>
-                <li><button><a href="mailto:example@email.com">Email</a></button></li>
-                <li><button><a href="https://github.com/example" target="_blank">GitHub</a></button></li>
-                <li><button><a href="https://linkedin.com/in/example" target="_blank">LinkedIn</a></button></li>
-            </ul>
         </section>
     </main>
     <footer>
